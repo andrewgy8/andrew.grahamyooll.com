@@ -1,1 +1,0 @@
-Kudos to makesit.py for providing this static site generator. 
