@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chic-a-Chic-a-CheckBox - AGY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body id="checkbox">
+
+<nav>
+<section>
+    <span class="home">
+        <a href="/">Home</a>
+        <a href="/blog/">Writings</a>
+    </span>
+</section>
+</nav>
+
+<main>
+<article>
+<h1><a href="/blog/checkbox/">Chic-a-Chic-a-CheckBox</a></h1>
+<p class="meta">Published on 2016-10-30 by <b>Andrew Graham-Yooll</b></p>
+<p>Im going to try to keep my future posts short and simple.<p>
+<p>KISS</p>
+<p><h2 class="section-heading">Ahhh…. the beautiful checkbox in your form.  You just love clicking it don’t you?</h2></p>
+<p>Well, lets put one in!</p>
+<p><h2 class="section-heading">Template</h2></p>
+<p>{% highlight html %}<ion-item>
+<ion-label>Check this out!</ion-label>
+&lt;ion-checkbox (click)=&quot;onCheckBox(1)&quot;&gt;</ion-checkbox>
+</ion-item>
+{% endhighlight %}</p>
+<p><h2 class="section-heading">Component</h2></p>
+<p>{% highlight javascript %}data = {1:'undefined'}</p>
+<p>onCheckBox(loc){
+//store the checkBox answers however you would like.
+// I use FormBuilder and then insert the checkBox Answers into my form on submittal
+let ans = this.data[loc]
+if(ans == 'undefined' || ans == 'false'){
+this.data[loc] = 'true'
+console.log('this.data true***', this.data)
+}<br />
+else{
+this.data[loc] = 'false'
+console.log('this.data false***', this.data)
+}
+}
+}
+{% endhighlight %}</p>
+<p><a href="http://embed.plnkr.co/v62Q3X/">Working Plunker</a></p>
+
+</article>
+
+</main>
+
+<footer>
+<section>
+<p>&copy; 2024 Andrew Graham-Yooll</p>
+<p>
+    <a href="https://github.com/andrewgy8">GitHub</a>
+    <a href="https://www.linkedin.com/in/andrew-graham-yooll-%F0%9F%8F%84-623771141/">Resumé/CV</a>
+</p>
+</section>
+</footer>
+
+</body>
+</html>
