@@ -9,35 +9,35 @@ from test import path
 
 class MainTest(unittest.TestCase):
     def setUp(self):
-        path.move('site', 'site.backup')
+        path.move('_site', '_site.backup')
         path.move('params.json', 'params.json.backup')
 
     def tearDown(self):
-        path.move('site.backup', 'site')
+        path.move('_site.backup', '_site')
         path.move('params.json.backup', 'params')
 
-    def testsite_missing(self):
+    def test_site_missing(self):
         makesite.main()
 
-    def testsite_exists(self):
-        os.mkdir('site')
-        with open('site/foo.txt', 'w') as f:
+    def test_site_exists(self):
+        os.mkdir('_site')
+        with open('_site/foo.txt', 'w') as f:
             f.write('foo')
 
-        self.assertTrue(os.path.isfile('site/foo.txt'))
+        self.assertTrue(os.path.isfile('_site/foo.txt'))
         makesite.main()
-        self.assertFalse(os.path.isfile('site/foo.txt'))
+        self.assertFalse(os.path.isfile('_site/foo.txt'))
 
     def test_default_params(self):
         makesite.main()
 
-        with open('site/blog/proin-quam/index.html') as f:
+        with open('_site/blog/proin-quam/index.html') as f:
             s1 = f.read()
 
-        with open('site/blog/rss.xml') as f:
+        with open('_site/blog/rss.xml') as f:
             s2 = f.read()
 
-        shutil.rmtree('site')
+        shutil.rmtree('_site')
 
         self.assertIn('<a href="/">Home</a>', s1)
         self.assertIn('<title>Proin Quam - Lorem Ipsum</title>', s1)
@@ -57,13 +57,13 @@ class MainTest(unittest.TestCase):
             json.dump(params, f)
         makesite.main()
 
-        with open('site/blog/proin-quam/index.html') as f:
+        with open('_site/blog/proin-quam/index.html') as f:
             s1 = f.read()
 
-        with open('site/blog/rss.xml') as f:
+        with open('_site/blog/rss.xml') as f:
             s2 = f.read()
 
-        shutil.rmtree('site')
+        shutil.rmtree('_site')
 
         self.assertIn('<a href="/base/">Home</a>', s1)
         self.assertIn('<title>Proin Quam - Foo</title>', s1)
