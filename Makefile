@@ -15,6 +15,9 @@ serve: site
 	    echo Cannot find Python http.server or SimpleHTTPServer; \
 	fi
 
+publish:
+	git subtree push --prefix site origin gh-pages
+
 venv: FORCE
 	python3 -m venv ~/.venv/makesite
 	echo . ~/.venv/makesite/bin/activate > venv
