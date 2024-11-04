@@ -215,7 +215,14 @@ def main():
     # Create RSS feeds.
     make_list(blog_posts, '_site/blog/rss.xml',
               feed_xml, item_xml, blog='blog', title='Blog', **params)
-
+    
+    # Fix attachments
+    shutil.copytree('content/blog/attachment', '_site/attachment')
+    # Prefix all img src with /
+    for src_path in glob.glob('_site/blog/*/index.html'):
+        content = fread(src_path)
+        content = content.replace('src="attachment/', 'src="/attachment/')
+        fwrite(src_path, content)
 
 # Test parameter to be set temporarily by unit tests.
 _test = None
