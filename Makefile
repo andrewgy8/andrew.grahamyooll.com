@@ -1,7 +1,7 @@
-site:
+makesite:
 	./makesite.py
 
-serve: site
+serve: makesite
 	if python3 -c 'import http.server' 2> /dev/null; then \
 	    echo Running Python3 http.server ...; \
 	    cd site && python3 -m http.server; \
@@ -15,7 +15,11 @@ serve: site
 	    echo Cannot find Python http.server or SimpleHTTPServer; \
 	fi
 
-publish:
+publish: makesite
+	cp CNAME site
+	cp .nojekyll site
+	git add .
+	git commit -m 'Publish site'
 	git subtree push --prefix site origin gh-pages
 
 venv: FORCE
