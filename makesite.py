@@ -167,10 +167,10 @@ def make_list(posts, dst, list_layout, item_layout, **params):
 
 
 def main():
-    # Create a new _site directory from scratch.
-    if os.path.isdir('_site'):
-        shutil.rmtree('_site')
-    shutil.copytree('static', '_site')
+    # Create a new site directory from scratch.
+    if os.path.isdir('site'):
+        shutil.rmtree('site')
+    shutil.copytree('static', 'site')
 
     # Default parameters.
     params = {
@@ -198,22 +198,22 @@ def main():
     list_layout = render(page_layout, content=list_layout)
 
     # Create site pages.
-    make_pages('content/_index.html', '_site/index.html',
+    make_pages('content/_index.html', 'site/index.html',
                page_layout, **params)
-    make_pages('content/[!_]*.html', '_site/{{ slug }}/index.html',
+    make_pages('content/[!_]*.html', 'site/{{ slug }}/index.html',
                page_layout, **params)
 
     # Create blogs.
     blog_posts = make_pages('content/blog/*.md',
-                            '_site/blog/{{ slug }}/index.html',
+                            'site/blog/{{ slug }}/index.html',
                             post_layout, blog='blog', **params)
 
     # Create blog list pages.
-    make_list(blog_posts, '_site/blog/index.html',
+    make_list(blog_posts, 'site/blog/index.html',
               list_layout, item_layout, blog='blog', title='Blog', **params)
 
     # Create RSS feeds.
-    make_list(blog_posts, '_site/blog/rss.xml',
+    make_list(blog_posts, 'site/blog/rss.xml',
               feed_xml, item_xml, blog='blog', title='Blog', **params)
 
 
