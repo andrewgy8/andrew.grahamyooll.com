@@ -171,6 +171,8 @@ def main():
     if os.path.isdir('_site'):
         shutil.rmtree('_site')
     shutil.copytree('static', '_site')
+    shutil.copy('CNAME', '_site/CNAME')
+    shutil.copy('.nojekyll', '_site/.nojekyll')
 
     # Default parameters.
     params = {
