@@ -1,6 +1,6 @@
 <!-- title:Twin Peaks Episodes 1-6 -->
 
-Twin Peaks, its been on my watch list for a while now. But since listening to the recent episodes on the Black Dahlia murders from [Last Podcast on the Left (Ep. 600)](https://www.lastpodcastontheleft.com/), my desire has only grown.
+Twin Peaks, its been on my watch list for a while now. But since listening to the recent episodes on the Black Dahlia murders from [Last Podcast on the Left (Ep. 600)](https://www.lastpodcastontheleft.com/), my desire has only grown. So I dove into it last week with my wife!
 
 While strange, mysterious and sometimes goofy, I thought it interesting to post my reactions/thoughts/comments on the episodes as we watch them. 
 
