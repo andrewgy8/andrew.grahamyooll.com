@@ -143,3 +143,14 @@ div .more {
 .rss:hover, .rss:active {
     background: #ff8822;
 }
+
+code {
+    display: block;
+    background: none;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 0;
+}

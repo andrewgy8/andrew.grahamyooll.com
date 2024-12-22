@@ -7,6 +7,19 @@
 <description>Andrew Graham-Yooll</description>
 
 <item>
+<title>Simple Scaling of Django's settings.py</title>
+<link>https://andrew.grahamyooll.com/blog/Simple-Scaling-of-Django's-settings/</link>
+<description>
+<![CDATA[
+<p>
+Throughout the lifetime of your project, your settings.py file will inevitably increase in size, LOC and complexity. The goal here is to simplify that complexity&nbsp;<a href="https://andrew.grahamyooll.com/blog/Simple-Scaling-of-Django's-settings/">...</a>
+</p>
+<p><a href="https://andrew.grahamyooll.com/blog/Simple-Scaling-of-Django's-settings/">Read More</a></p>
+]]>
+</description>
+<pubDate>Thu, 07 Nov 2024 00:00:00 +0000</pubDate>
+</item>
+<item>
 <title>Groupthink In Engineering Teams</title>
 <link>https://andrew.grahamyooll.com/blog/Groupthink In Engineering Teams/</link>
 <description>
