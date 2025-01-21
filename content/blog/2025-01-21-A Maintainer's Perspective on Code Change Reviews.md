@@ -22,3 +22,5 @@ As a maintainer, I understand that reviews may seem like friction-filled formali
 Code reviews are indeed a brake on changes for all maintainers to understand what the changes are doing and why they are being accepted. As a maintainer, if something breaks with the change, we are most likely going to be the ones to fix the issue.
 
 As stated above, open source is hard. So, no, I won't be YOLO'ing your changes to the main build of a large library.
+
+Any other maintainers feel the same way? Let me know via email andrewgy8[at]gmail.com
