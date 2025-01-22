@@ -41,7 +41,7 @@
 <p>to render something like </p>
 <i class="material-icons">thumbs_up_down</i><i class="material-icons">face</i><i class="material-icons">thumbs_up_down</i>
 <p>for offline use.</p>
-<p><h2 class="section-heading">Summary</h2></p>
+<h2 class="section-heading">Summary</h2>
 <ol>
 	<li>Start an Ionic project</li>
 	<li>Get the Material Icons font files, and place them in /app</li>
@@ -49,11 +49,11 @@
 	<li>Add CSS in order to declare the HTML elements</li>
 	<li>Declare the Material Icons in your project HTML</li>
 </ol>
-<p><h2 class="section-heading">The lines</h2></p>
+<h2 class="section-heading">The lines</h2>
 <p>I assume you have node.js, npm and Ionic configured for simple Ionic Project generation. If not, I will be including a short description on how to get started (or you can visit the <a href="http://ionicframework.com/docs/v2/getting-started/installation/">Ionic Quickstart Page</a>).</p>
-<p>{% highlight bash %}$ ionic start material-icons --v2
-$ cd material-icons
-$ ionic serve
+<p>{% highlight bash %}$ ionic start material-icons --v2<br />
+$ cd material-icons<br />
+$ ionic serve<br />
 {% endhighlight %}</p>
 <p>Depending on the way you set up NPM on your device, you might get an error</p>
 {% highlight bash %}Error: EACCES: permission denied...
@@ -63,36 +63,36 @@ $ ionic serve
 $ sudo ionic serve
 </code>
 <p>Your project should be up, running and viewable in your browser.</p>
-<p><h2 class="section-heading">Getting the icons</h2></p>
+<h2 class="section-heading">Getting the icons</h2>
 <p>Navigate to the <a href="https://github.com/google/material-design-icons/tree/master/iconfont
 ">Material-Icons repository</a>, and download the latest woff, woff2, wot, ttf, svg, and css file.</p>
 <p>Once downloaded, we need to include them in our app. To do that, we need to understand how the app works.</p>
 <p>In Ionic2, the file structure setup when you run the command {% highlight bash %}$ ionic start material-icons --v2{% endhighlight %}, is relatively straight forward. For our purposes in this tutorial, the basic structure goes like this: </p>
-<p>{% highlight bash %}material-icons &lt;--root
+<p>{% highlight bash %}material-icons &lt;--root<br />
 --/app &lt;-- where your code goes<br />
 --/www &lt;-- where your app is built to(don't touch anything in hear unless told to)<br />
 --gulpfile.js &lt;-- what builds your app<br />
 {% endhighlight %}</p>
 <p>Yes, I know that there are other things in your file. But let's KISS (keep it stupid simple), and pretend we can not see those other files at the moment. </p>
-<p>{% highlight bash %}within /app, you write all your code
-||
-/
-gulpfile.js &quot;sees&quot; your code in /app
-||
-/		
-code in /app is processed from typescript
-||
-/
-placed into /www for your browser/device to read
+<p>{% highlight bash %}within /app, you write all your code<br />
+||<br />
+/<br />
+gulpfile.js &quot;sees&quot; your code in /app<br />
+||<br />
+/		<br />
+code in /app is processed from typescript<br />
+||<br />
+/<br />
+placed into /www for your browser/device to read<br />
 {% endhighlight %}</p>
 <p>Now, you may be asking yourself, "why don't we just put all code into the /www folder?"</p>
-<p><h2 class="section-heading">Experiment Time!</h2></p>
+<h2 class="section-heading">Experiment Time!</h2>
 <p>I  strongly encourage you to try to put the Material Icons files we downloaded earlier, directly into the /www file.</p> 
 <p> If you do, make sure to copy the files and don't just drag and drop. You'll thank me later.</p>
 <p>Once you re-start the server and see the app in your browser, look back in your editor. Checkout your /www file and search for the Material Icons file you placed in there. You will notice something that really frustrated me the first time I tried this, but it taught me a lot about the process of building an app.</p>
 <p>If you do end up going on with this experiment, let us know what happened!</p>
 <p>Note: I doubt anything destructive will occur, but if you do something and you can't get your app to function anymore, don't sweat! Just revert back to your last commit, or restart the app.</p>
-<p><h2 class="section-heading">Put them in the right place</h2></p>
+<h2 class="section-heading">Put them in the right place</h2>
 <p>While placing the font files into /www is interesting, it is clearly not the right place.</p>
 <p>If you did the experiment, you should have noticed that the Material Icons folders disappeared when the changes were saved. The reason lies in gulpfile.js and we will get to that in a bit.</p>
 <p>The "right" place to put the font-files is is not well documented at this point in Ionic2. Therefore, I went ahead and created a folder in /app called /md-icons. That is where I dropped them off at.  If you follow this method, the rest will work. But if you find a different place, please change the paths respectively in your code.</p>
@@ -108,44 +108,44 @@ placed into /www for your browser/device to read
 --/www <-- where your app is built to        
 --gulpfile.js <-- what builds your app  
 {% endhighlight %}
-<p><h2 class="section-heading">Adjusting your gulpfile.js</h2></p>
+<h2 class="section-heading">Adjusting your gulpfile.js</h2>
 <p>As we said earlier, the gulpfile is responsible for taking our code or scripts, minifying, and then placing them into the /www. From there, the browser is served the files in the /www folder that it needs to produce a view or function.</p>
 <p>The issue with our gulpfile.js file, and the reason our files disappeared from the /www folder is that we never told the gulpfile that we wanted those files processed and placed into the /www folder. That is what we are now going to do.</p>
 <p>Add this to your gulpfile.js:</p>
 <p>{% highlight javascript %}var isRelease = argv.indexOf('--release') &gt; -1;</p>
-<p>gulp.task('watch', ['clean'], function(done){
-runSequence(
-['sass', 'html', 'fonts', //ADD THIS HERE! --&gt; 'customFonts', 'scripts'],
-function(){
-gulpWatch('app/<strong>/*.scss', function(){ gulp.start('sass'); });
-gulpWatch('app/</strong>/*.html', function(){ gulp.start('html'); });
-buildBrowserify({ watch: true }).on('end', done);
-}
-);
+<p>gulp.task('watch', ['clean'], function(done){<br />
+runSequence(<br />
+['sass', 'html', 'fonts', //ADD THIS HERE! --&gt; 'customFonts', 'scripts'],<br />
+function(){<br />
+gulpWatch('app/<strong>/*.scss', function(){ gulp.start('sass'); });<br />
+gulpWatch('app/</strong>/*.html', function(){ gulp.start('html'); });<br />
+buildBrowserify({ watch: true }).on('end', done);<br />
+}<br />
+);<br />
 });</p>
-<p>gulp.task('build', ['clean'], function(done){
-runSequence(
-['data', 'sass', 'html', 'fonts', //ADD THIS HERE! --&gt; 'customFonts', 'scripts' ],
-function(){
-buildBrowserify({
-minify: isRelease,
-browserifyOptions: {
-debug: !isRelease
-},
-uglifyOptions: {
-mangle: false
-}
-}).on('end', done);
-}
-);
+<p>gulp.task('build', ['clean'], function(done){<br />
+runSequence(<br />
+['data', 'sass', 'html', 'fonts', //ADD THIS HERE! --&gt; 'customFonts', 'scripts' ],<br />
+function(){<br />
+buildBrowserify({<br />
+minify: isRelease,<br />
+browserifyOptions: {<br />
+debug: !isRelease<br />
+},<br />
+uglifyOptions: {<br />
+mangle: false<br />
+}<br />
+}).on('end', done);<br />
+}<br />
+);<br />
 });</p>
-<p>gulp.task('customFonts', function () {
-return copyFonts({
-src: [
-&quot;app/md-icons/*.+(eot|ttf|woff|woff2|svg)&quot;
-]
-});
-});
+<p>gulp.task('customFonts', function () {<br />
+return copyFonts({<br />
+src: [<br />
+&quot;app/md-icons/*.+(eot|ttf|woff|woff2|svg)&quot;<br />
+]<br />
+});<br />
+});<br />
 {% endhighlight %}</p>
 <p>This basically says, that all those Material-Icon files should be copied and placed in your /build directory.</p>
 <p>We add the 'customFonts' argument into the 'watch' and 'build' phases of the gulptask.js</p>
@@ -154,7 +154,7 @@ src: [
 </a>
 <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
  -->
-<p><h2 class="section-heading">The home stretch</h2></p>
+ <h2 class="section-heading">The home stretch</h2>
 <p>We are almost there!</p>
 <p>Now, we just have to specify in our CSS what it means when we declare an element to have class="material-icons".</p>
 <p>Open your /app/theme/app.core.scss and place the following toward the bottom:</p>
@@ -168,27 +168,27 @@ src: [
        url('../fonts/MaterialIcons-Regular.ttf') format('truetype'),<- notice the path changes from original!
        url('../fonts/MaterialIcons-Regular.svg') format('svg'); <----- notice the path changes from original!
 }
-<p>.material-icons {
-font-family: 'Material Icons';
-font-weight: normal;
-font-style: normal;
-font-size: 24px;  /* Preferred icon size */
-display: inline-block;
-line-height: 1;
-text-transform: none;
-letter-spacing: normal;
-word-wrap: normal;
-white-space: nowrap;
+<p>.material-icons {<br />
+font-family: 'Material Icons';<br />
+font-weight: normal;<br />
+font-style: normal;<br />
+font-size: 24px;  /* Preferred icon size */<br />
+display: inline-block;<br />
+line-height: 1;<br />
+text-transform: none;<br />
+letter-spacing: normal;<br />
+word-wrap: normal;<br />
+white-space: nowrap;<br />
 direction: ltr;</p>
-<p>/* Support for all WebKit browsers. <em>/
--webkit-font-smoothing: antialiased;
-/</em> Support for Safari and Chrome. */
+<p>/* Support for all WebKit browsers. <em>/<br />
+-webkit-font-smoothing: antialiased;<br />
+/</em> Support for Safari and Chrome. */<br />
 text-rendering: optimizeLegibility;</p>
-<p>/* Support for Firefox. */
+<p>/* Support for Firefox. */<br />
 -moz-osx-font-smoothing: grayscale;</p>
-<p>/* Support for IE. */
-font-feature-settings: 'liga';
-}
+<p>/* Support for IE. */<br />
+font-feature-settings: 'liga';<br />
+}<br />
 {% endhighlight %}</p>
 <p>Finally, you should be able to call the element {% highlight html %} <i class="material-icons">face</i> {% endhighlight %} and have it render: </p>
 <p><i class="material-icons">stars</i><i class="material-icons">flare</i><i class="material-icons">stars</i></p>

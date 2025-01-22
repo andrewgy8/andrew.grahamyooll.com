@@ -102,8 +102,10 @@ def read_content(filename):
         try:
             if _test == 'ImportError':
                 raise ImportError('Error forced by test')
-            import commonmark
-            text = commonmark.commonmark(text)
+            from markdown_it import MarkdownIt
+
+            md = MarkdownIt('commonmark', {'breaks':True,'html':True})
+            text = md.render(text)
         except ImportError as e:
             log('WARNING: Cannot render Markdown in {}: {}', filename, str(e))
 
