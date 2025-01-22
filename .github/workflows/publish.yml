@@ -16,12 +16,11 @@ jobs:
         enable-cache: true
     - name: run bakesite
       run: |
-        python makesite.py
-
+        uv run makesite.py
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
       env:
-        REPO: git@github.com:owner/repo.git
+        REPO: git@github.com:andrewgy8/my-page.git
         BRANCH: gh-pages
-        FOLDER: build
+        FOLDER: _site
         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
