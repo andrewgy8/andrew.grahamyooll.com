@@ -1,7 +1,7 @@
 import unittest
 import os
 import shutil
-import makesite
+import bakesite
 from test import path
 
 class PagesTest(unittest.TestCase):
@@ -35,7 +35,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, '[fb]*.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '<div>{{ content }}</div>'
-        makesite.make_pages(src, dst, tpl)
+        bakesite.make_pages(src, dst, tpl)
         with open(os.path.join(self.site_path, 'foo.txt')) as f:
             self.assertEqual(f.read(), '<div>Foo</div>')
         with open(os.path.join(self.site_path, 'bar.txt')) as f:
@@ -45,7 +45,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, '2*.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '<div>{{ content }}</div>'
-        makesite.make_pages(src, dst, tpl)
+        bakesite.make_pages(src, dst, tpl)
         with open(os.path.join(self.site_path, 'foo.txt')) as f:
             self.assertEqual(f.read(), '<div>Foo</div>')
         with open(os.path.join(self.site_path, 'bar.txt')) as f:
@@ -55,7 +55,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, '2*.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '<div>{{ slug }}:{{ title }}:{{ date }}:{{ content }}</div>'
-        makesite.make_pages(src, dst, tpl, title='Lorem')
+        bakesite.make_pages(src, dst, tpl, title='Lorem')
         with open(os.path.join(self.site_path, 'foo.txt')) as f:
             self.assertEqual(f.read(), '<div>foo:Lorem:2018-01-01:Foo</div>')
         with open(os.path.join(self.site_path, 'bar.txt')) as f:
@@ -65,7 +65,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, '2*.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '<div>{{ content }}</div>'
-        posts = makesite.make_pages(src, dst, tpl)
+        posts = bakesite.make_pages(src, dst, tpl)
         self.assertEqual(len(posts), 2)
         self.assertEqual(posts[0]['date'], '2018-01-02')
         self.assertEqual(posts[1]['date'], '2018-01-01')
@@ -76,7 +76,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, 'header*.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '{{ title }}:{{ tag }}:{{ content }}'
-        makesite.make_pages(src, dst, tpl)
+        bakesite.make_pages(src, dst, tpl)
         with open(os.path.join(self.site_path, 'header-foo.txt')) as f:
             self.assertEqual(f.read(), '{{ title }}:foo:Foo')
         with open(os.path.join(self.site_path, 'header-bar.txt')) as f:
@@ -88,7 +88,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, 'placeholder-foo.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '<div>{{ content }}</div>'
-        makesite.make_pages(src, dst, tpl, author='Admin')
+        bakesite.make_pages(src, dst, tpl, author='Admin')
         with open(os.path.join(self.site_path, 'placeholder-foo.txt')) as f:
             self.assertEqual(f.read(), '<div>{{ title }}:{{ author }}:Foo</div>')
 
@@ -98,7 +98,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, 'placeholder-foo.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '<div>{{ content }}</div>'
-        makesite.make_pages(src, dst, tpl, author='Admin', render='yes')
+        bakesite.make_pages(src, dst, tpl, author='Admin', render='yes')
         with open(os.path.join(self.site_path, 'placeholder-foo.txt')) as f:
             self.assertEqual(f.read(), '<div>foo:Admin:Foo</div>')
 
@@ -108,7 +108,7 @@ class PagesTest(unittest.TestCase):
         src = os.path.join(self.blog_path, 'placeholder-bar.txt')
         dst = os.path.join(self.site_path, '{{ slug }}.txt')
         tpl = '<div>{{ content }}</div>'
-        makesite.make_pages(src, dst, tpl, author='Admin')
+        bakesite.make_pages(src, dst, tpl, author='Admin')
         with open(os.path.join(self.site_path, 'placeholder-bar.txt')) as f:
             self.assertEqual(f.read(), '<div>bar:Admin:Bar</div>')
 
@@ -121,7 +121,7 @@ class PagesTest(unittest.TestCase):
         post_layout = ''
         list_layout = '<div>{{ content }}</div>'
         item_layout = '<p>{{ summary }}</p>'
-        posts = makesite.make_pages(src, post_dst, post_layout, author='Admin')
-        makesite.make_list(posts, list_dst, list_layout, item_layout)
+        posts = bakesite.make_pages(src, post_dst, post_layout, author='Admin')
+        bakesite.make_list(posts, list_dst, list_layout, item_layout)
         with open(os.path.join(self.site_path, 'list.txt')) as f:
             self.assertEqual(f.read(), '<div><p>{{ title }}:{{ author }}:Foo</p><p>bar:Admin:Bar</p></div>')

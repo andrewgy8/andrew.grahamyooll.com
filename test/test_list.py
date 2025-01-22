@@ -1,7 +1,7 @@
 import unittest
 import shutil
 import os
-import makesite
+import bakesite
 from test import path
 
 class PagesTest(unittest.TestCase):
@@ -16,7 +16,7 @@ class PagesTest(unittest.TestCase):
         dst = os.path.join(self.site_path, 'list.txt')
         list_layout = '<div>{{ content }}</div>'
         item_layout = '<p>{{ content }}</p>'
-        makesite.make_list(posts, dst, list_layout, item_layout)
+        bakesite.make_list(posts, dst, list_layout, item_layout)
         with open(os.path.join(self.site_path, 'list.txt')) as f:
             self.assertEqual(f.read(), '<div><p>Foo</p><p>Bar</p></div>')
 
@@ -26,7 +26,7 @@ class PagesTest(unittest.TestCase):
         dst = os.path.join(self.site_path, 'list.txt')
         list_layout = '<div>{{ key }}:{{ title }}:{{ content }}</div>'
         item_layout = '<p>{{ key }}:{{ title }}:{{ content }}</p>'
-        makesite.make_list(posts, dst, list_layout, item_layout,
+        bakesite.make_list(posts, dst, list_layout, item_layout,
                            key='val', title='lorem')
         with open(os.path.join(self.site_path, 'list.txt')) as f:
             text = f.read()
@@ -38,7 +38,7 @@ class PagesTest(unittest.TestCase):
         dst = os.path.join(self.site_path, '{{ key }}.txt')
         list_layout = '<div>{{ content }}</div>'
         item_layout = '<p>{{ content }}</p>'
-        makesite.make_list(posts, dst, list_layout, item_layout, key='val')
+        bakesite.make_list(posts, dst, list_layout, item_layout, key='val')
 
         expected_path = os.path.join(self.site_path, 'val.txt')
         self.assertTrue(os.path.isfile(expected_path))
