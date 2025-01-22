@@ -104,7 +104,7 @@ def read_content(filename):
                 raise ImportError('Error forced by test')
             from markdown_it import MarkdownIt
 
-            md = MarkdownIt('commonmark', {'breaks':True,'html':True})
+            md = MarkdownIt('js-default', {'breaks':True,'html':True})
             text = md.render(text)
         except ImportError as e:
             log('WARNING: Cannot render Markdown in {}: {}', filename, str(e))

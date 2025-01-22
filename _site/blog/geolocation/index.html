@@ -37,8 +37,8 @@
 <p class="meta">Published on 2017-01-27 by <b>Andrew Graham-Yooll</b></p>
 <p>The other day I was installing the Cordova Geolocation plugin on an Ionic2 implementing Redux app I have. The issue I was having, was storing the “geolocation" object returned from the Geolocation.getCurrentLocation() method. </p>
 <p>The object looks like this:</p>
-<p>{% highlight javascript %}console.log(Geolocation.getCurrentLocation());<br />
-// Geolocation{coords: Coordinates{latitude: #number here, longitude: #number here, accuracy: #number here….}, timestamp: number here}<br />
+<p>{% highlight javascript %}console.log(Geolocation.getCurrentLocation());<br>
+// Geolocation{coords: Coordinates{latitude: #number here, longitude: #number here, accuracy: #number here….}, timestamp: number here}<br>
 {% endhighlight %}</p>
 <p>It seemed straight forward at first, take the object and through my reducer, assign it to the store.  I did that, but would always end up with an empty object instead of the output object.</p>
 <p>What was happening, is that the when using Object.assign with the Geoposition object, the object assign would “lose” the data. Nothing would turn up in the reducer.  Only an empty object.</p>
@@ -82,18 +82,18 @@
         return state;
 };
 </code></pre>
-<p>}<br />
+<p>}<br>
 {% endhighlight %}</p>
 <p>location.effects.ts</p>
 {% highlight javascript %}export interface GeolocationResp {
     timestamp: number;
     coords: GeoLocationData;
 }
-<p>@Injectable()<br />
-export class LocationEffects {<br />
-constructor(<br />
-private actions$: Actions,<br />
-private locationService: LocationService<br />
+<p>@Injectable()<br>
+export class LocationEffects {<br>
+constructor(<br>
+private actions$: Actions,<br>
+private locationService: LocationService<br>
 ) { }</p>
 <pre><code>@Effect() getGpsLocation$: Observable&lt;Action&gt; = this.actions$
     .ofType(locationActions.ActionTypes.GET_GPS_LOCATION)
@@ -113,7 +113,7 @@ export class LocationService {
     return Observable.fromPromise&lt;any&gt;(Geolocation.getCurrentPosition());
 }
 </code></pre>
-<p>}<br />
+<p>}<br>
 {% endhighlight %}</p>
 <p>locationresponse.service.ts</p>
 {% highlight javascript %}public static geolocationToApp(geopositionObj:Geoposition): Geoposition{
@@ -132,12 +132,12 @@ export class LocationService {
         timestamp: time
     }
 }
-<p>public static mapPositionErrorMessage(errorMessage: PositionError): PositionError[]{<br />
-return [{<br />
-code: errorMessage.code,<br />
-message: errorMessage.message<br />
-}]<br />
-}<br />
+<p>public static mapPositionErrorMessage(errorMessage: PositionError): PositionError[]{<br>
+return [{<br>
+code: errorMessage.code,<br>
+message: errorMessage.message<br>
+}]<br>
+}<br>
 {% endhighlight %}</p>
 
 </article>

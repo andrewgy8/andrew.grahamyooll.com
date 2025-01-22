@@ -21,9 +21,11 @@ I can imagine in the near future that the script I have will get quite messy. As
 3. Use the [Markdown Export plugin](https://github.com/bingryan/obsidian-markdown-export-plugin), and set the destination to my directory locally which hosts my blog. 
 <img src="attachment/aab971c9bb282650d587b484cc8a58e0.png" />
 4. Locally, I can serve my blog and make any UI changes to the html. 
-5. Once I'm happy with it, I then publish it with `git subtree push --prefix _site origin gh-pages`
+5. ~~Once I'm happy with it, I then publish it with `git subtree push --prefix _site origin gh-pages`~~
+   
+   **Edit on 2025-01-22:** I have now enabled a Github action which takes what is pushed to the main branch, builds the site, and then pushes it to the gh-pages branch where Github then serves the folder. This has greatly simplified the deployment process
 
-Here you can find all the code related to the blog hosting [here](https://github.com/andrewgy8/my-page). 
+Here ~~you~~ can find all the code related to the blog hosting [here](https://github.com/andrewgy8/my-page). 
 
 ## Note
 The blog is work in progress, and Im taking it one post at a time to see how it works out. But if you find it useful, by all means go ahead and use this workflow. 

@@ -40,27 +40,27 @@
 <h2 class="section-heading">Ahhh…. the beautiful checkbox in your form.  You just love clicking it don’t you?</h2>
 <p>Well, lets put one in!</p>
 <h2 class="section-heading">Template</h2>
-<p>{% highlight html %}<ion-item><br />
-<ion-label>Check this out!</ion-label><br />
-&lt;ion-checkbox (click)=&quot;onCheckBox(1)&quot;&gt;</ion-checkbox><br />
-</ion-item><br />
+<p>{% highlight html %}<ion-item><br>
+<ion-label>Check this out!</ion-label><br>
+&lt;ion-checkbox (click)=&quot;onCheckBox(1)&quot;&gt;</ion-checkbox><br>
+</ion-item><br>
 {% endhighlight %}</p>
 <h2 class="section-heading">Component</h2>
 <p>{% highlight javascript %}data = {1:'undefined'}</p>
-<p>onCheckBox(loc){<br />
-//store the checkBox answers however you would like.<br />
-// I use FormBuilder and then insert the checkBox Answers into my form on submittal<br />
-let ans = this.data[loc]<br />
-if(ans == 'undefined' || ans == 'false'){<br />
-this.data[loc] = 'true'<br />
-console.log('this.data true***', this.data)<br />
-}<br />
-else{<br />
-this.data[loc] = 'false'<br />
-console.log('this.data false***', this.data)<br />
-}<br />
-}<br />
-}<br />
+<p>onCheckBox(loc){<br>
+//store the checkBox answers however you would like.<br>
+// I use FormBuilder and then insert the checkBox Answers into my form on submittal<br>
+let ans = this.data[loc]<br>
+if(ans == 'undefined' || ans == 'false'){<br>
+this.data[loc] = 'true'<br>
+console.log('this.data true***', this.data)<br>
+}<br>
+else{<br>
+this.data[loc] = 'false'<br>
+console.log('this.data false***', this.data)<br>
+}<br>
+}<br>
+}<br>
 {% endhighlight %}</p>
 <p><a href="http://embed.plnkr.co/v62Q3X/">Working Plunker</a></p>
 
