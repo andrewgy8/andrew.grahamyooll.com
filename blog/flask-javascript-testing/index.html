@@ -58,11 +58,11 @@ karma init{% endhighlight %}
 </ol>
 <p>That just means that we are going to look and put all our javascript tests into a test/something directory. And importantly, the test names all end with spec.js.  For example, something.spec.js</p>
 <p>We can then test it out by creating a test in the something.spec.js file:</p>
-<p>{% highlight javascript %}<br />
-describe(&quot;A suite&quot;, function() {<br />
-it(&quot;contains spec with an expectation&quot;, function() {<br />
-expect(true).toBe(true);<br />
-});<br />
+<p>{% highlight javascript %}<br>
+describe(&quot;A suite&quot;, function() {<br>
+it(&quot;contains spec with an expectation&quot;, function() {<br>
+expect(true).toBe(true);<br>
+});<br>
 });{% endhighlight %}</p>
 <p>And then we save and run:</p> 
 {% highlight bash %}karma start{% endhighlight %}
