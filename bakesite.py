@@ -27,6 +27,8 @@
 """Make static website/blog with Python."""
 
 
+import argparse
+import functools
 import os
 import shutil
 import re
@@ -168,7 +170,7 @@ def make_list(posts, dst, list_layout, item_layout, **params):
     fwrite(dst_path, output)
 
 
-def main():
+def bake():
     # Create a new _site directory from scratch.
     if os.path.isdir('_site'):
         shutil.rmtree('_site')
@@ -231,6 +233,33 @@ def main():
 # Test parameter to be set temporarily by unit tests.
 _test = None
 
+def serve():
+    """Serve the site using Python's built-in HTTP server."""
+    import http.server
+    import socketserver
+
+    PORT = 8003
+
+    Handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory='./_site')
+
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        log("Serving at port http://localhost:{}", PORT)
+        httpd.serve_forever()
+
+
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(
+                    prog='bakefile',
+                    description='Simple static site generator',
+                    epilog='bake your site')
+    subparsers = parser.add_subparsers(dest='command', required=True)
+    subparsers.add_parser('bake',
+                        help='bake your markdown files into a static site')
+    subparsers.add_parser('serve', help='locally serve the site at localhost:8003')
+    args = parser.parse_args()
+    if args.command == 'bake':
+        bake()
+    elif args.command == 'serve':
+        serve()
+

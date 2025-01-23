@@ -1,4 +1,8 @@
 # Bakesite
 
-Dead simple static site for github pages. Write markdown, publish html. 
+Simple static site generator for Github pages in less than 130 lines of code. 
+
+Write markdown, publish html. 
+
+
 

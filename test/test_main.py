@@ -17,7 +17,7 @@ class MainTest(unittest.TestCase):
         path.move('params.json.backup', 'params')
 
     def test_site_missing(self):
-        bakesite.main()
+        bakesite.bake()
 
     def test_site_exists(self):
         os.mkdir('_site')
@@ -25,11 +25,11 @@ class MainTest(unittest.TestCase):
             f.write('foo')
 
         self.assertTrue(os.path.isfile('_site/foo.txt'))
-        bakesite.main()
+        bakesite.bake()
         self.assertFalse(os.path.isfile('_site/foo.txt'))
 
     def test_default_params(self):
-        bakesite.main()
+        bakesite.bake()
 
         with open('_site/blog/proin-quam/index.html') as f:
             s1 = f.read()
@@ -55,7 +55,7 @@ class MainTest(unittest.TestCase):
         }
         with open('params.json', 'w') as f:
             json.dump(params, f)
-        bakesite.main()
+        bakesite.bake()
 
         with open('_site/blog/proin-quam/index.html') as f:
             s1 = f.read()
