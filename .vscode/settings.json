@@ -1,0 +1,12 @@
+{
+    "python.analysis.indexing": true,
+    "python.analysis.autoImportCompletions": true,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+            "source.organizeImports.isort": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+    },
+}
