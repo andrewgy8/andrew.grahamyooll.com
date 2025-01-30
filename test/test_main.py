@@ -1,5 +1,5 @@
 import unittest
-import bakesite
+import bakesite.compile as compile
 import os
 import shutil
 import json
@@ -17,7 +17,7 @@ class MainTest(unittest.TestCase):
         path.move('params.json.backup', 'params')
 
     def test_site_missing(self):
-        bakesite.bake()
+        compile.bake()
 
     def test_site_exists(self):
         os.mkdir('_site')
@@ -25,11 +25,11 @@ class MainTest(unittest.TestCase):
             f.write('foo')
 
         self.assertTrue(os.path.isfile('_site/foo.txt'))
-        bakesite.bake()
+        compile.bake()
         self.assertFalse(os.path.isfile('_site/foo.txt'))
 
     def test_default_params(self):
-        bakesite.bake()
+        compile.bake()
 
         with open('_site/blog/proin-quam/index.html') as f:
             s1 = f.read()
@@ -55,7 +55,7 @@ class MainTest(unittest.TestCase):
         }
         with open('params.json', 'w') as f:
             json.dump(params, f)
-        bakesite.bake()
+        compile.bake()
 
         with open('_site/blog/proin-quam/index.html') as f:
             s1 = f.read()

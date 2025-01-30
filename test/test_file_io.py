@@ -2,7 +2,7 @@ import unittest
 import os
 import shutil
 
-import bakesite
+import bakesite.compile as compile
 from test import path
 
 
@@ -14,14 +14,14 @@ class FileIOTest(unittest.TestCase):
         filepath = path.temppath("foo.txt")
         with open(filepath, "w") as f:
             f.write(text)
-        text_read = bakesite.fread(filepath)
+        text_read = compile.fread(filepath)
         os.remove(filepath)
         self.assertEqual(text_read, text)
 
     def test_fwrite(self):
         text = "baz\nqux\n"
         filepath = path.temppath("foo.txt")
-        bakesite.fwrite(filepath, text)
+        compile.fwrite(filepath, text)
         with open(filepath) as f:
             text_read = f.read()
         os.remove(filepath)
@@ -31,7 +31,7 @@ class FileIOTest(unittest.TestCase):
         text = "baz\nqux\n"
         dirpath = path.temppath("foo", "bar")
         filepath = os.path.join(dirpath, "foo.txt")
-        bakesite.fwrite(filepath, text)
+        compile.fwrite(filepath, text)
         with open(filepath) as f:
             text_read = f.read()
         self.assertTrue(os.path.isdir(dirpath))

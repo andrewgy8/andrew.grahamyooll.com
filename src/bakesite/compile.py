@@ -1,5 +1,3 @@
-import argparse
-import functools
 import os
 import shutil
 import re
@@ -7,8 +5,6 @@ import glob
 import sys
 import json
 import datetime
-
-from art import PIE_ASCII
 
 
 def fread(filename):
@@ -224,36 +220,3 @@ def bake():
 # Test parameter to be set temporarily by unit tests.
 _test = None
 
-
-def serve():
-    import http.server
-    import socketserver
-
-    PORT = 8003
-
-    Handler = functools.partial(
-        http.server.SimpleHTTPRequestHandler, directory="./_site"
-    )
-
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        log("Serving at port http://localhost:{}", PORT)
-        httpd.serve_forever()
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        prog="bakesite",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        description=f"{PIE_ASCII}\nSimple static site generator ",
-    )
-    subparsers = parser.add_subparsers(dest="command", required=True)
-    subparsers.add_parser("bake", help="bake your markdown files into a static site")
-    subparsers.add_parser(
-        "serve", help="locally serve the site at http://localhost:8003"
-    )
-    args = parser.parse_args()
-
-    if args.command == "bake":
-        bake()
-    elif args.command == "serve":
-        serve()

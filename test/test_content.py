@@ -2,7 +2,7 @@ import unittest
 import shutil
 import os
 
-import bakesite
+import bakesite.compile as compile
 from test import path
 
 
@@ -40,45 +40,45 @@ class ContentTest(unittest.TestCase):
         self.mock_args = args
 
     def test_content_content(self):
-        content = bakesite.read_content(self.undated_path)
+        content = compile.read_content(self.undated_path)
         self.assertEqual(content["content"], "hello world")
 
     def test_content_date(self):
-        content = bakesite.read_content(self.dated_path)
+        content = compile.read_content(self.dated_path)
         self.assertEqual(content["date"], "2018-01-01")
 
     def test_content_date_missing(self):
-        content = bakesite.read_content(self.undated_path)
+        content = compile.read_content(self.undated_path)
         self.assertEqual(content["date"], "1970-01-01")
 
     def test_content_slug_dated(self):
-        content = bakesite.read_content(self.dated_path)
+        content = compile.read_content(self.dated_path)
         self.assertEqual(content["slug"], "foo")
 
     def test_content_slug_undated(self):
-        content = bakesite.read_content(self.undated_path)
+        content = compile.read_content(self.undated_path)
         self.assertEqual(content["slug"], "foo")
 
     def test_content_headers(self):
-        content = bakesite.read_content(self.normal_post_path)
+        content = compile.read_content(self.normal_post_path)
         self.assertEqual(content["a"], "1")
         self.assertEqual(content["b"], "2")
         self.assertEqual(content["content"], "Foo")
 
     def test_markdown_rendering(self):
-        content = bakesite.read_content(self.md_post_path)
+        content = compile.read_content(self.md_post_path)
         self.assertEqual(content["content"], "<p><em>Foo</em></p>\n")
 
     def test_markdown_import_error(self):
-        bakesite._test = "ImportError"
-        original_log = bakesite.log
+        compile._test = "ImportError"
+        original_log = compile.log
 
-        bakesite.log = self.mock
+        compile.log = self.mock
         self.mock_args = None
-        content = bakesite.read_content(self.md_post_path)
+        content = compile.read_content(self.md_post_path)
 
-        bakesite._test = None
-        bakesite.log = original_log
+        compile._test = None
+        compile.log = original_log
 
         self.assertEqual(content["content"], "*Foo*")
         self.assertEqual(
@@ -91,19 +91,19 @@ class ContentTest(unittest.TestCase):
         )
 
     def test_no_markdown_rendering(self):
-        content = bakesite.read_content(self.no_md_post_path)
+        content = compile.read_content(self.no_md_post_path)
         self.assertEqual(content["content"], "*Foo*")
 
     def test_no_markdown_import_error(self):
-        bakesite._test = "ImportError"
-        original_log = bakesite.log
+        compile._test = "ImportError"
+        original_log = compile.log
 
-        bakesite.log = self.mock
+        compile.log = self.mock
         self.mock_args = None
-        content = bakesite.read_content(self.no_md_post_path)
+        content = compile.read_content(self.no_md_post_path)
 
-        bakesite._test = None
-        bakesite.log = original_log
+        compile._test = None
+        compile.log = original_log
 
         self.assertEqual(content["content"], "*Foo*")
         self.assertIsNone(self.mock_args)

@@ -1,10 +1,10 @@
 version = 1
-requires-python = ">=3.11"
+requires-python = ">=3.13"
 
 [[package]]
 name = "bakesite"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "markdown-it-py", extra = ["plugins"] },
 ]
