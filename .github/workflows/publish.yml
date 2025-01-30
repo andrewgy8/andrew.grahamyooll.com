@@ -21,7 +21,7 @@ jobs:
         uv pip install .
     - name: run bakesite
       run: |
-        bakesite bake
+        uv run bakesite bake
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
       env:
