@@ -136,7 +136,7 @@ def make_list(posts, dst, list_layout, item_layout, **params):
     fwrite(dst_path, output)
 
 
-def bake():
+def bake(params):
     # Create a new _site directory from scratch.
     if os.path.isdir("_site"):
         shutil.rmtree("_site")
@@ -145,19 +145,6 @@ def bake():
     shutil.copytree(f"{current_path}/layouts/basic/static", "_site")
     shutil.copy("CNAME", "_site/CNAME")
     shutil.copy(".nojekyll", "_site/.nojekyll")
-
-    # Default parameters.
-    params = {
-        "base_path": "",
-        "subtitle": "AGY",
-        "author": "Andrew Graham-Yooll",
-        "site_url": "https://andrew.grahamyooll.com",
-        "current_year": datetime.datetime.now().year,
-    }
-
-    # If params.json exists, load it.
-    if os.path.isfile("params.json"):
-        params.update(json.loads(fread("params.json")))
 
     # Load layouts.
     page_layout = fread(f"{current_path}/layouts/basic/templates/page.html")
