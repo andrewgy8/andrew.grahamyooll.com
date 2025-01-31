@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+import pathlib
 import shutil
 import re
 import glob
@@ -142,7 +144,8 @@ def bake():
     # Create a new _site directory from scratch.
     if os.path.isdir("_site"):
         shutil.rmtree("_site")
-    shutil.copytree("static", "_site")
+    current_path = pathlib.Path(__file__).parent
+    shutil.copytree(f"{current_path}/layouts/basic/static", "_site")
     shutil.copy("CNAME", "_site/CNAME")
     shutil.copy(".nojekyll", "_site/.nojekyll")
 
@@ -160,12 +163,12 @@ def bake():
         params.update(json.loads(fread("params.json")))
 
     # Load layouts.
-    page_layout = fread("layout/page.html")
-    post_layout = fread("layout/post.html")
-    list_layout = fread("layout/list.html")
-    item_layout = fread("layout/item.html")
-    feed_xml = fread("layout/feed.xml")
-    item_xml = fread("layout/item.xml")
+    page_layout = fread(f"{current_path}/layouts/basic/templates/page.html")
+    post_layout = fread(f"{current_path}/layouts/basic/templates/post.html")
+    list_layout = fread(f"{current_path}/layouts/basic/templates/list.html")
+    item_layout = fread(f"{current_path}/layouts/basic/templates/item.html")
+    feed_xml = fread(f"{current_path}/layouts/basic/templates/feed.xml")
+    item_xml = fread(f"{current_path}/layouts/basic/templates/item.xml")
 
     # Combine layouts to form final layouts.
     post_layout = render(page_layout, content=post_layout)
@@ -219,4 +222,3 @@ def bake():
 
 # Test parameter to be set temporarily by unit tests.
 _test = None
-
