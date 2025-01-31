@@ -30,6 +30,9 @@ def main():
     except ImportError:
         logger.error("settings.py file not found. Please add one to the project.")
         sys.exit(1)
+    except AttributeError:
+        logger.error("settings.py file does not contain a params dictionary.")
+        sys.exit(1)
 
     if args.command == "bake":
         bake(params=params)
