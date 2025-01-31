@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z73RLG2NVR"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', G-Z73RLG2NVR);
+    </script>
+    <title>My Simple Obsidian to Github Pages Writing Workflow - AGY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Google tag (gtag.js) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body id="Obsidian-Github-Pages-Blog-Workflow">
+
+<nav>
+    <section>
+        <span class="home">
+            <a href="/">Home</a>
+            <a href="/blog/">Writings</a>
+        </span>
+    </section>
+</nav>
+
+<main>
+<article>
+<h1><a href="/blog/Obsidian-Github-Pages-Blog-Workflow/">My Simple Obsidian to Github Pages Writing Workflow</a></h1>
+<p class="meta">Published on 2024-11-04 by <b>Andrew Graham-Yooll</b></p>
+<p>Writing is hard. But so is publishing your writing. And much like software, publishing is the analog of &quot;going to production&quot; ie. only when your thoughts and writing are in the wild can it really have an impact.</p>
+<p>After starting and stopping many articles, only to have dreaded the publishing of the writing, I decided to ditch all the fancy static site generators and go barebones with html and css.</p>
+<p>Well... I actually stumbled upon a <a href="https://github.com/sunainapai/makesite">simple, no-frills Python script</a> that compiles together markdown files into html.</p>
+<p>With this, I'm able to write my blog post in Obsidian, export it to markdown in the blog project, and then publish the blog post to Github. And within 2 min, I have got it published.</p>
+<h1>Pros and Cons</h1>
+<p>The cost is 0$. All writing happens locally within Obsidian. And the headache of publishing has nearly gone away.<br>
+I can imagine in the near future that the script I have will get quite messy. As I add in more edge cases or features, there will need to be some hands-on maintenance of this workflow.</p>
+<h1>How Does it Work</h1>
+<ol>
+<li>Setup a command in Obsidian using the <a href="https://github.com/chhoumann/quickadd">QuickAdd plugin</a> which pulls a blog template I have into a blog directory within my Vault.</li>
+</ol>
+<blockquote>
+<p>Note: My template has <code>&lt;!-- title:My Simple Obsidian to Github Pages Writing Workflow --&gt;</code> in the top for the static site script to work properly.<br>
+<img src="/attachment/ed6b39690cd6f4f1b095ee0794a7d301.png" /></p>
+</blockquote>
+<ol start="2">
+<li>
+<p>Write what I want in the file.</p>
+</li>
+<li>
+<p>Use the <a href="https://github.com/bingryan/obsidian-markdown-export-plugin">Markdown Export plugin</a>, and set the destination to my directory locally which hosts my blog.<br>
+<img src="/attachment/aab971c9bb282650d587b484cc8a58e0.png" /></p>
+</li>
+<li>
+<p>Locally, I can serve my blog and make any UI changes to the html.</p>
+</li>
+<li>
+<p><s>Once I'm happy with it, I then publish it with <code>git subtree push --prefix _site origin gh-pages</code></s></p>
+<p><strong>Edit on 2025-01-22:</strong> I have now enabled a Github action which builds the site and then pushes it to the gh-pages branch where Github then serves the folder. This has greatly simplified the deployment process.</p>
+</li>
+</ol>
+<p>You can find all the code related to the blog hosting <a href="https://github.com/andrewgy8/my-page">here</a>.</p>
+<h2>Note</h2>
+<p>The blog is work in progress, and Im taking it one post at a time to see how it works out. But if you find it useful, by all means go ahead and use this workflow.</p>
+<p>And if you have any questions, feel free to open up an issue and I'll be happy to answer it.</p>
+
+</article>
+
+</main>
+
+<footer>
+<section>
+<p>&copy; 2025 Andrew Graham-Yooll</p>
+<p>
+    <a href=https://github.com/andrewgy8>GitHub</a>
+    <a href=https://www.linkedin.com/in/andrew-graham-yooll-%F0%9F%8F%84-623771141/>LinkedIn (CV)</a>
+</p>
+</section>
+</footer>
+
+</body>
+</html>

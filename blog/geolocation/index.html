@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z73RLG2NVR"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', G-Z73RLG2NVR);
+    </script>
+    <title>Cordova Geolocation Plugin with Ionic 2 and ngRx - AGY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Google tag (gtag.js) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body id="geolocation">
+
+<nav>
+    <section>
+        <span class="home">
+            <a href="/">Home</a>
+            <a href="/blog/">Writings</a>
+        </span>
+    </section>
+</nav>
+
+<main>
+<article>
+<h1><a href="/blog/geolocation/">Cordova Geolocation Plugin with Ionic 2 and ngRx</a></h1>
+<p class="meta">Published on 2017-01-27 by <b>Andrew Graham-Yooll</b></p>
+<p>The other day I was installing the Cordova Geolocation plugin on an Ionic2 implementing Redux app I have. The issue I was having, was storing the “geolocation" object returned from the Geolocation.getCurrentLocation() method. </p>
+<p>The object looks like this:</p>
+<p>{% highlight javascript %}console.log(Geolocation.getCurrentLocation());<br>
+// Geolocation{coords: Coordinates{latitude: #number here, longitude: #number here, accuracy: #number here….}, timestamp: number here}<br>
+{% endhighlight %}</p>
+<p>It seemed straight forward at first, take the object and through my reducer, assign it to the store.  I did that, but would always end up with an empty object instead of the output object.</p>
+<p>What was happening, is that the when using Object.assign with the Geoposition object, the object assign would “lose” the data. Nothing would turn up in the reducer.  Only an empty object.</p>
+<p>Therefore, I had to go back to self assigning in my reducer store.</p>
+<p> Here is the code: </p>
+<p>location.reducer.ts</p>
+{% highlight javascript %}export function reducer(state = initialState, action: locationActions.Actions): LocationState {
+    switch (action.type) {
+        case locationActions.ActionTypes.GET_GPS_LOCATION: {
+<pre><code>        return Object.assign({}, state, &lt;LocationState&gt;{
+            isLoading: true
+        })
+    };
+    case locationActions.ActionTypes.GET_GPS_LOCATION_SUCCESS: {
+
+        let location: GeoLocationData =  action.locationData;
+        const locationStateObj = {
+            latitude: location.latitude,
+            longitude: location.longitude,
+            accuracy: location.accuracy
+        }
+
+        return Object.assign({}, state, &lt;LocationState&gt;{
+            isLoading: false,
+            currentLocData: locationStateObj,
+            error: null
+        });
+    };
+    case locationActions.ActionTypes.GET_GPS_LOCATION_FAIL: {
+        let error = action.error;
+
+        console.error(error);
+
+        return Object.assign({}, state, &lt;LocationState&gt;{
+            isLoading: false,
+            error: error
+        });
+    };
+
+    default:
+        return state;
+};
+</code></pre>
+<p>}<br>
+{% endhighlight %}</p>
+<p>location.effects.ts</p>
+{% highlight javascript %}export interface GeolocationResp {
+    timestamp: number;
+    coords: GeoLocationData;
+}
+<p>@Injectable()<br>
+export class LocationEffects {<br>
+constructor(<br>
+private actions$: Actions,<br>
+private locationService: LocationService<br>
+) { }</p>
+<pre><code>@Effect() getGpsLocation$: Observable&lt;Action&gt; = this.actions$
+    .ofType(locationActions.ActionTypes.GET_GPS_LOCATION)
+    .switchMap(() =&gt; {
+        return this.locationService.getCurrentPosition()
+            .map((resp: Geoposition) =&gt; this.locationService.checkPositionAccuracy(resp))
+            .map(resp =&gt; new locationActions.GetGpsLocationSuccess(resp))
+            .catch(error =&gt; Observable.of(new locationActions.GetGpsLocationFail(error)))
+    })        
+    .catch(error =&gt; Observable.of(new locationActions.GetGpsLocationFail(error)))
+</code></pre>
+<p>{% endhighlight %}</p>
+<p>location.service.ts</p>
+{% highlight javascript %}@Injectable()
+export class LocationService {
+<pre><code>public getCurrentPosition(): Observable&lt;any&gt;{
+    return Observable.fromPromise&lt;any&gt;(Geolocation.getCurrentPosition());
+}
+</code></pre>
+<p>}<br>
+{% endhighlight %}</p>
+<p>locationresponse.service.ts</p>
+{% highlight javascript %}public static geolocationToApp(geopositionObj:Geoposition): Geoposition{
+    let geoposition = geopositionObj.coords;
+    let time = geopositionObj.timestamp;
+    return {
+        coords:{
+            latitude: geoposition.latitude,
+            longitude: geoposition.longitude,
+            altitude: geoposition.altitude,
+            altitudeAccuracy: geoposition.altitudeAccuracy,
+            heading: geoposition.heading,
+            accuracy: geoposition.accuracy,
+            speed: geoposition.speed
+        },
+        timestamp: time
+    }
+}
+<p>public static mapPositionErrorMessage(errorMessage: PositionError): PositionError[]{<br>
+return [{<br>
+code: errorMessage.code,<br>
+message: errorMessage.message<br>
+}]<br>
+}<br>
+{% endhighlight %}</p>
+
+</article>
+
+</main>
+
+<footer>
+<section>
+<p>&copy; 2025 Andrew Graham-Yooll</p>
+<p>
+    <a href=https://github.com/andrewgy8>GitHub</a>
+    <a href=https://www.linkedin.com/in/andrew-graham-yooll-%F0%9F%8F%84-623771141/>LinkedIn (CV)</a>
+</p>
+</section>
+</footer>
+
+</body>
+</html>
