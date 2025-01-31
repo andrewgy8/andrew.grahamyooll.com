@@ -2,7 +2,7 @@ import unittest
 import os
 import shutil
 
-from test import path
+from tests import path
 
 class PathTest(unittest.TestCase):
     def test_temppath(self):

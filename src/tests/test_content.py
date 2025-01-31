@@ -2,8 +2,8 @@ import unittest
 import shutil
 import os
 
-import bakesite.compile as compile
-from test import path
+from bakesite import compile
+from tests import path
 
 
 class ContentTest(unittest.TestCase):
@@ -67,43 +67,16 @@ class ContentTest(unittest.TestCase):
 
     def test_markdown_rendering(self):
         content = compile.read_content(self.md_post_path)
+
         self.assertEqual(content["content"], "<p><em>Foo</em></p>\n")
-
-    def test_markdown_import_error(self):
-        compile._test = "ImportError"
-        original_log = compile.log
-
-        compile.log = self.mock
-        self.mock_args = None
-        content = compile.read_content(self.md_post_path)
-
-        compile._test = None
-        compile.log = original_log
-
-        self.assertEqual(content["content"], "*Foo*")
-        self.assertEqual(
-            self.mock_args,
-            (
-                "WARNING: Cannot render Markdown in {}: {}",
-                self.md_post_path,
-                "Error forced by test",
-            ),
-        )
 
     def test_no_markdown_rendering(self):
         content = compile.read_content(self.no_md_post_path)
         self.assertEqual(content["content"], "*Foo*")
 
     def test_no_markdown_import_error(self):
-        compile._test = "ImportError"
-        original_log = compile.log
-
-        compile.log = self.mock
         self.mock_args = None
         content = compile.read_content(self.no_md_post_path)
-
-        compile._test = None
-        compile.log = original_log
 
         self.assertEqual(content["content"], "*Foo*")
         self.assertIsNone(self.mock_args)

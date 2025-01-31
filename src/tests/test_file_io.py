@@ -1,14 +1,11 @@
-import unittest
 import os
 import shutil
 
 import bakesite.compile as compile
-from test import path
+from tests import path
 
 
-class FileIOTest(unittest.TestCase):
-    """Tests for file I/O functions."""
-
+class TestFileIO:
     def test_fread(self):
         text = "foo\nbar\n"
         filepath = path.temppath("foo.txt")
@@ -16,7 +13,8 @@ class FileIOTest(unittest.TestCase):
             f.write(text)
         text_read = compile.fread(filepath)
         os.remove(filepath)
-        self.assertEqual(text_read, text)
+
+        assert text_read == text
 
     def test_fwrite(self):
         text = "baz\nqux\n"
@@ -25,7 +23,8 @@ class FileIOTest(unittest.TestCase):
         with open(filepath) as f:
             text_read = f.read()
         os.remove(filepath)
-        self.assertEqual(text_read, text)
+
+        assert text_read == text
 
     def test_fwrite_makedir(self):
         text = "baz\nqux\n"
@@ -34,6 +33,7 @@ class FileIOTest(unittest.TestCase):
         compile.fwrite(filepath, text)
         with open(filepath) as f:
             text_read = f.read()
-        self.assertTrue(os.path.isdir(dirpath))
+        assert os.path.isdir(dirpath)
         shutil.rmtree(path.temppath("foo"))
-        self.assertEqual(text_read, text)
+
+        assert text_read == text

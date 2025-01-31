@@ -2,7 +2,7 @@ import unittest
 import os
 import shutil
 import bakesite.compile as compile
-from test import path
+from tests import path
 
 class PagesTest(unittest.TestCase):
     def setUp(self):

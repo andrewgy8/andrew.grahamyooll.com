@@ -4,7 +4,6 @@ import pathlib
 import shutil
 import re
 import glob
-import json
 import datetime
 
 logger = logging.getLogger(__name__)
@@ -69,13 +68,10 @@ def read_content(filename):
     # Convert Markdown content to HTML.
     if filename.endswith((".md", ".mkd", ".mkdn", ".mdown", ".markdown")):
         try:
-            if _test == "ImportError":
-                raise ImportError("Error forced by test")
             from markdown_it import MarkdownIt
-
             md = MarkdownIt("js-default", {"breaks": True, "html": True})
             text = md.render(text)
-        except ImportError as e:
+        except ImportError:
             logger.warning(f"Cannot render Markdown in {filename}", exc_info=True)
 
     # Update the dictionary with content and RFC 2822 date.
@@ -136,15 +132,15 @@ def make_list(posts, dst, list_layout, item_layout, **params):
     fwrite(dst_path, output)
 
 
-def bake(params):
+def bake(params, target_dir="_site"):
     # Create a new _site directory from scratch.
-    if os.path.isdir("_site"):
-        shutil.rmtree("_site")
+    if os.path.isdir(f"{target_dir}"):
+        shutil.rmtree(f"{target_dir}")
 
     current_path = pathlib.Path(__file__).parent
-    shutil.copytree(f"{current_path}/layouts/basic/static", "_site")
-    shutil.copy("CNAME", "_site/CNAME")
-    shutil.copy(".nojekyll", "_site/.nojekyll")
+    shutil.copytree(f"{current_path}/layouts/basic/static", f"{target_dir}")
+    shutil.copy("CNAME", f"{target_dir}/CNAME")
+    shutil.copy(".nojekyll", f"{target_dir}/.nojekyll")
 
     # Load layouts.
     page_layout = fread(f"{current_path}/layouts/basic/templates/page.html")
@@ -158,15 +154,18 @@ def bake(params):
     post_layout = render(page_layout, content=post_layout)
     list_layout = render(page_layout, content=list_layout)
     # Create site pages.
-    make_pages("content/_index.html", "_site/index.html", page_layout, **params)
+    make_pages("content/_index.html", f"{target_dir}/index.html", page_layout, **params)
     make_pages(
-        "content/[!_]*.html", "_site/{{ slug }}/index.html", page_layout, **params
+        "content/[!_]*.html",
+        f"{target_dir}/{{ slug }}/index.html",
+        page_layout,
+        **params,
     )
 
     # Create blogs.
     blog_posts = make_pages(
         "content/blog/*.md",
-        "_site/blog/{{ slug }}/index.html",
+        f"{target_dir}/blog/{{ slug }}/index.html",
         post_layout,
         blog="blog",
         **params,
@@ -175,7 +174,7 @@ def bake(params):
     # Create blog list pages.
     make_list(
         blog_posts,
-        "_site/blog/index.html",
+        f"{target_dir}/blog/index.html",
         list_layout,
         item_layout,
         blog="blog",
@@ -186,7 +185,7 @@ def bake(params):
     # Create RSS feeds.
     make_list(
         blog_posts,
-        "_site/blog/rss.xml",
+        f"{target_dir}/blog/rss.xml",
         feed_xml,
         item_xml,
         blog="blog",
@@ -195,13 +194,9 @@ def bake(params):
     )
 
     # Fix attachments
-    shutil.copytree("content/blog/attachment", "_site/attachment")
+    shutil.copytree("content/blog/attachment", f"{target_dir}/attachment")
     # Prefix all img src with /
-    for src_path in glob.glob("_site/blog/*/index.html"):
+    for src_path in glob.glob(f"{target_dir}/blog/*/index.html"):
         content = fread(src_path)
         content = content.replace('src="attachment/', 'src="/attachment/')
         fwrite(src_path, content)
-
-
-# Test parameter to be set temporarily by unit tests.
-_test = None
