@@ -1,6 +1,6 @@
 # Bakesite
 
-A refreshingly simple static site/blog generator for Github pages. 
+A refreshingly simple static site/blog generator. 
 
 Markdown in. HTML out.
 

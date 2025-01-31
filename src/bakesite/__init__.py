@@ -1,5 +1,6 @@
 import argparse
 
+from bakesite.logging import *  # noqa: F401 F403
 from bakesite.art import PIE_ASCII
 from bakesite.compile import bake
 from bakesite.server import serve
@@ -17,7 +18,6 @@ def main():
         "serve", help="locally serve the site at http://localhost:8003"
     )
     args = parser.parse_args()
-
     if args.command == "bake":
         bake()
     elif args.command == "serve":

@@ -1,12 +1,13 @@
+import logging
 import os
-from pathlib import Path
 import pathlib
 import shutil
 import re
 import glob
-import sys
 import json
 import datetime
+
+logger = logging.getLogger(__name__)
 
 
 def fread(filename):
@@ -23,11 +24,6 @@ def fwrite(filename, text):
 
     with open(filename, "w") as f:
         f.write(text)
-
-
-def log(msg, *args):
-    """Log message with specified arguments."""
-    sys.stderr.write(msg.format(*args) + "\n")
 
 
 def truncate(text, words=25):
@@ -80,7 +76,7 @@ def read_content(filename):
             md = MarkdownIt("js-default", {"breaks": True, "html": True})
             text = md.render(text)
         except ImportError as e:
-            log("WARNING: Cannot render Markdown in {}: {}", filename, str(e))
+            logger.warning(f"Cannot render Markdown in {filename}", exc_info=True)
 
     # Update the dictionary with content and RFC 2822 date.
     content.update({"content": text, "rfc_2822_date": rfc_2822_format(content["date"])})
@@ -117,7 +113,7 @@ def make_pages(src, dst, layout, **params):
         dst_path = render(dst, **page_params)
         output = render(layout, **page_params)
 
-        log("Rendering {} => {} ...", src_path, dst_path)
+        logger.info(f"Rendering {src_path} => {dst_path} ...")
         fwrite(dst_path, output)
 
     return sorted(items, key=lambda x: x["date"], reverse=True)
@@ -136,7 +132,7 @@ def make_list(posts, dst, list_layout, item_layout, **params):
     dst_path = render(dst, **params)
     output = render(list_layout, **params)
 
-    log("Rendering list => {} ...", dst_path)
+    logger.info(f"Rendering list => {dst_path} ...")
     fwrite(dst_path, output)
 
 
@@ -144,6 +140,7 @@ def bake():
     # Create a new _site directory from scratch.
     if os.path.isdir("_site"):
         shutil.rmtree("_site")
+
     current_path = pathlib.Path(__file__).parent
     shutil.copytree(f"{current_path}/layouts/basic/static", "_site")
     shutil.copy("CNAME", "_site/CNAME")
@@ -173,7 +170,6 @@ def bake():
     # Combine layouts to form final layouts.
     post_layout = render(page_layout, content=post_layout)
     list_layout = render(page_layout, content=list_layout)
-
     # Create site pages.
     make_pages("content/_index.html", "_site/index.html", page_layout, **params)
     make_pages(
