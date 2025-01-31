@@ -20,6 +20,7 @@ def mock_params():
         "github_url": "https://github.com/andrewgy8",
         "linkedin_url": "https://www.linkedin.com",
         "gtag_id": "G-1234",
+        "cname": "test.grahamyooll.com",
     }
 
 

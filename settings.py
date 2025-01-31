@@ -9,5 +9,6 @@ params = {
     "current_year": datetime.datetime.now().year,
     "github_url": "https://github.com/andrewgy8",
     "linkedin_url": "https://www.linkedin.com/in/andrew-graham-yooll-%F0%9F%8F%84-623771141/",
-    "gtag_id": "G-Z73RLG2NVR"
+    "gtag_id": "G-Z73RLG2NVR",
+    "cname": "andrew.grahamyooll.com",
 }

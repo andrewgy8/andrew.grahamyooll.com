@@ -69,6 +69,7 @@ def read_content(filename):
     if filename.endswith((".md", ".mkd", ".mkdn", ".mdown", ".markdown")):
         try:
             from markdown_it import MarkdownIt
+
             md = MarkdownIt("js-default", {"breaks": True, "html": True})
             text = md.render(text)
         except ImportError:
@@ -132,6 +133,11 @@ def make_list(posts, dst, list_layout, item_layout, **params):
     fwrite(dst_path, output)
 
 
+def write_cname(params, target_dir):
+    with open(f"{target_dir}/CNAME", "w") as f:
+        f.write(params["cname"])
+
+
 def bake(params, target_dir="_site"):
     # Create a new _site directory from scratch.
     if os.path.isdir(f"{target_dir}"):
@@ -139,8 +145,8 @@ def bake(params, target_dir="_site"):
 
     current_path = pathlib.Path(__file__).parent
     shutil.copytree(f"{current_path}/layouts/basic/static", f"{target_dir}")
-    shutil.copy("CNAME", f"{target_dir}/CNAME")
-    shutil.copy(".nojekyll", f"{target_dir}/.nojekyll")
+    write_cname(params, target_dir)
+    open(f"{target_dir}/.nojekyll", "a").close()
 
     # Load layouts.
     page_layout = fread(f"{current_path}/layouts/basic/templates/page.html")
