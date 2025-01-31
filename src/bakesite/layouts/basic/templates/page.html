@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z73RLG2NVR"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ gtag_id }}"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-Z73RLG2NVR');
+    gtag('config', {{ gtag_id }});
     </script>
     <title>{{ title }} - {{ subtitle }}</title>
     <meta charset="UTF-8">
@@ -37,10 +37,10 @@
 
 <footer>
 <section>
-<p>&copy; {{ current_year }} Andrew Graham-Yooll</p>
+<p>&copy; {{ current_year }} {{ author }}</p>
 <p>
-    <a href="https://github.com/andrewgy8">GitHub</a>
-    <a href="https://www.linkedin.com/in/andrew-graham-yooll-%F0%9F%8F%84-623771141/">LinkedIn (CV)</a>
+    <a href={{ github_url }}>GitHub</a>
+    <a href={{ linkedin_url }}>LinkedIn (CV)</a>
 </p>
 </section>
 </footer>
