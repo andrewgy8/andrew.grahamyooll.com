@@ -1,12 +1,6 @@
-from pathlib import Path
-import tempfile
-import unittest
-
 import pytest
 import bakesite.compile as compile
 import os
-import shutil
-import json
 
 
 @pytest.fixture

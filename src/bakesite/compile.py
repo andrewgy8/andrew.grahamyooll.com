@@ -163,7 +163,7 @@ def bake(params, target_dir="_site"):
     make_pages("content/_index.html", f"{target_dir}/index.html", page_layout, **params)
     make_pages(
         "content/[!_]*.html",
-        f"{target_dir}/{{ slug }}/index.html",
+        target_dir + "{{ slug }}/index.html",
         page_layout,
         **params,
     )
@@ -171,7 +171,7 @@ def bake(params, target_dir="_site"):
     # Create blogs.
     blog_posts = make_pages(
         "content/blog/*.md",
-        f"{target_dir}/blog/{{ slug }}/index.html",
+        target_dir + "/blog/{{ slug }}/index.html",
         post_layout,
         blog="blog",
         **params,
