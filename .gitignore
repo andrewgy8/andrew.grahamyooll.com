@@ -3,6 +3,5 @@ __pycache__
 .coverage
 htmlcov
 *.sw?
-.DS_Store
 .venv
 _site

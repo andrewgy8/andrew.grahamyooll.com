@@ -9,19 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Install the latest version of uv
-      uses: astral-sh/setup-uv@v5
+    - uses: actions/setup-python@v5
       with:
-        enable-cache: true
+        python-version: '3.13'
+        cache: 'pip'
     - name: Install dependencies
       run: |
-        uv sync --all-extras
-    - name: Install bakesite
-      run: |
-        uv pip install .
+        pip install -r bakesite
     - name: run bakesite
       run: |
-        uv run bakesite bake
+        bakesite bake
     - name: Deploy
       uses: s0/git-publish-subdir-action@develop
       env:

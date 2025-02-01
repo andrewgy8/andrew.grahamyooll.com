@@ -4,13 +4,14 @@ requires-python = ">=3.13"
 [[package]]
 name = "bakesite"
 version = "0.1.0"
-source = { editable = "." }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markdown-it-py", extra = ["plugins"] },
 ]
-
-[package.metadata]
-requires-dist = [{ name = "markdown-it-py", extras = ["plugins"] }]
+sdist = { url = "https://files.pythonhosted.org/packages/c7/0e/f45e49bdd03e572e7f98e7e9d4d2751b98586dd1d20b9da8d3bcaa0aef69/bakesite-0.1.0.tar.gz", hash = "sha256:6a53c086a607601e10c06608e0cd6e0c9b356f029c5cf6eecd1b800181f1cb99", size = 12927 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bc/3d/d300e82e25aee23ad35b541f46c4e677c19ad3f536b5d4393c359f71ed19/bakesite-0.1.0-py3-none-any.whl", hash = "sha256:1dc74917af2b40b7afd2519ffc7d13651227594dfaee0af7e09d409d1177ad8b", size = 11893 },
+]
 
 [[package]]
 name = "markdown-it-py"
@@ -49,3 +50,14 @@ sdist = { url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec9
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8", size = 9979 },
 ]
+
+[[package]]
+name = "myblog"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "bakesite" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "bakesite" }]
