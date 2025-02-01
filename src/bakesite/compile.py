@@ -160,7 +160,7 @@ def bake(params, target_dir="_site"):
     post_layout = render(page_layout, content=post_layout)
     list_layout = render(page_layout, content=list_layout)
     # Create site pages.
-    make_pages("content/_index.html", f"{target_dir}/index.html", page_layout, **params)
+    make_pages("content/index.md", f"{target_dir}/index.html", page_layout, **params)
     make_pages(
         "content/[!_]*.html",
         target_dir + "{{ slug }}/index.html",
