@@ -1,5 +1,5 @@
 # My Personal Site
 
-Built with Bakesite
+Built with bakesite
 
 
