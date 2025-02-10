@@ -7,7 +7,20 @@
 <description>Andrew Graham-Yooll</description>
 
 <item>
-<title>Don't be The Asshat: A Maintainer's Perspective on Code Change Reviews</title>
+<title>Running Django's Javascript Tests</title>
+<link>https://andrew.grahamyooll.com/blog/Running-Djangos-Javascript-Tests/</link>
+<description>
+<![CDATA[
+<p>
+Django has lots of tests, and wide range of types: unit tests with Unittest UI/Selenium tests Screenshots Javascript QUnit tests I recently dug into an&nbsp;<a href="https://andrew.grahamyooll.com/blog/Running-Djangos-Javascript-Tests/">...</a>
+</p>
+<p><a href="https://andrew.grahamyooll.com/blog/Running-Djangos-Javascript-Tests/">Read More</a></p>
+]]>
+</description>
+<pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
+</item>
+<item>
+<title>Don't Be That Person: A Maintainer's Perspective on Code Change Reviews</title>
 <link>https://andrew.grahamyooll.com/blog/A Maintainer's Perspective on Code Change Reviews/</link>
 <description>
 <![CDATA[
