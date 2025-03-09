@@ -18,8 +18,7 @@ Django has lots of tests, and wide range of types: unit tests with Unittest UI/S
 ]]>
 </description>
 <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Don't Be That Person: A Maintainer's Perspective on Code Change Reviews</title>
 <link>https://andrew.grahamyooll.com/blog/A Maintainer's Perspective on Code Change Reviews/</link>
 <description>
@@ -31,8 +30,7 @@ What most people underestimate about open source is that creating a PR is only t
 ]]>
 </description>
 <pubDate>Tue, 21 Jan 2025 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>My WTF's of Twin Peaks Season 1</title>
 <link>https://andrew.grahamyooll.com/blog/Twin Peaks Episodes 1-6/</link>
 <description>
@@ -44,8 +42,7 @@ Twin Peaks, its been on my watch list for a while now. But since listening to th
 ]]>
 </description>
 <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Groupthink In Engineering Teams</title>
 <link>https://andrew.grahamyooll.com/blog/Groupthink In Engineering Teams/</link>
 <description>
@@ -57,8 +54,7 @@ What is Groupthink? As defined by Wikipedia , groupthink is: a psychological phe
 ]]>
 </description>
 <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>My Simple Obsidian to Github Pages Writing Workflow</title>
 <link>https://andrew.grahamyooll.com/blog/Obsidian-Github-Pages-Blog-Workflow/</link>
 <description>
@@ -70,8 +66,7 @@ Writing is hard. But so is publishing your writing. And much like software, publ
 ]]>
 </description>
 <pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Copy/Pasta Driven Development®</title>
 <link>https://andrew.grahamyooll.com/blog/copy-pasta-driven-development/</link>
 <description>
@@ -83,8 +78,7 @@ As seen in numerous pull requests, the conversation goes something like this: Me
 ]]>
 </description>
 <pubDate>Sun, 26 Jul 2020 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Good Job Jekyll</title>
 <link>https://andrew.grahamyooll.com/blog/good-job-jekyll/</link>
 <description>
@@ -96,8 +90,7 @@ Good job Jekyll and the team around Jekyll Admin ! After lots of time away from 
 ]]>
 </description>
 <pubDate>Sun, 21 Jun 2020 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Flask and Javascript Testing</title>
 <link>https://andrew.grahamyooll.com/blog/flask-javascript-testing/</link>
 <description>
@@ -109,8 +102,7 @@ There comes a time in a Flask applications lifecycle where javascript testing ma
 ]]>
 </description>
 <pubDate>Tue, 20 Feb 2018 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Pgloader on Mac</title>
 <link>https://andrew.grahamyooll.com/blog/pgloader-mac/</link>
 <description>
@@ -122,8 +114,7 @@ Getting Started The other day, we at Solaris Offgrid needed to port our database
 ]]>
 </description>
 <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Cordova Geolocation Plugin with Ionic 2 and ngRx</title>
 <link>https://andrew.grahamyooll.com/blog/geolocation/</link>
 <description>
@@ -135,8 +126,7 @@ The other day I was installing the Cordova Geolocation plugin on an Ionic2 imple
 ]]>
 </description>
 <pubDate>Fri, 27 Jan 2017 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Chic-a-Chic-a-CheckBox</title>
 <link>https://andrew.grahamyooll.com/blog/checkbox/</link>
 <description>
@@ -148,8 +138,7 @@ Im going to try to keep my future posts short and simple. KISS Ahhh…. the beau
 ]]>
 </description>
 <pubDate>Sun, 30 Oct 2016 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>VirtualBox on Kali-Linux</title>
 <link>https://andrew.grahamyooll.com/blog/virtualbox/</link>
 <description>
@@ -161,8 +150,7 @@ Want to run a virtual machine within Kali Linux? You can use VirtualBox easily o
 ]]>
 </description>
 <pubDate>Thu, 27 Oct 2016 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Learning programming the harder way</title>
 <link>https://andrew.grahamyooll.com/blog/learn-the-hardway/</link>
 <description>
@@ -174,8 +162,7 @@ Summary The answers to your bug or issue most likely is NOT in a textbook, blogp
 ]]>
 </description>
 <pubDate>Thu, 22 Sep 2016 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>Icons For Days</title>
 <link>https://andrew.grahamyooll.com/blog/icons/</link>
 <description>
@@ -187,8 +174,7 @@ Let me start off by saying that the folks over at Ionic are doing a great job. T
 ]]>
 </description>
 <pubDate>Sat, 17 Sep 2016 00:00:00 +0000</pubDate>
-</item>
-<item>
+</item><item>
 <title>README</title>
 <link>https://andrew.grahamyooll.com/blog/readme/</link>
 <description>
@@ -201,7 +187,6 @@ readme One of the greatest lessons I have learned in development is to always re
 </description>
 <pubDate>Fri, 16 Sep 2016 00:00:00 +0000</pubDate>
 </item>
-
 
 </channel>
 </rss>
