@@ -1,4 +1,8 @@
-<!-- title:My WTF's of Twin Peaks Season 1 -->
+---
+title: My WTF's of Twin Peaks Season 1
+tags:
+  - Entertainment
+---
 
 Twin Peaks, its been on my watch list for a while now. But since listening to the recent episodes on the Black Dahlia murders from [Last Podcast on the Left (Ep. 600)](https://www.lastpodcastontheleft.com/), my desire has only grown.
 

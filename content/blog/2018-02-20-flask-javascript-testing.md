@@ -1,4 +1,6 @@
-<!-- title:Flask and Javascript Testing -->
+--- 
+title: Flask and Javascript Testing 
+---
 
 <p>There comes a time in a Flask applications lifecycle where javascript testing may become necessary. You might have lots of jQuery laying around. Or get that sneaking feeling like you are going to start adding some Vue.js code into your project.</p>
 

@@ -1,4 +1,11 @@
-<!-- title:My Simple Obsidian to Github Pages Writing Workflow -->
+---
+title: My Simple Obsidian to Github Pages Writing Workflow
+tags:
+  - Engineering
+  - meta
+  - Obsidian
+---
+
 Writing is hard. But so is publishing your writing. And much like software, publishing is the analog of "going to production" ie. only when your thoughts and writing are in the wild can it really have an impact.
 
 After starting and stopping many articles, only to have dreaded the publishing of the writing, I decided to ditch all the fancy static site generators and go barebones with html and css. 

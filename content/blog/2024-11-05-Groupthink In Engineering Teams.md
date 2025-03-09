@@ -1,4 +1,9 @@
-<!-- title:Groupthink In Engineering Teams -->
+---
+title: Groupthink In Engineering Teams
+tags:
+  - Engineering
+---
+
 # What is Groupthink?
 
 As defined by [Wikipedia](https://en.wikipedia.org/wiki/Groupthink), groupthink is:

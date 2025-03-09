@@ -1,4 +1,8 @@
-<!-- title:Running Django's Javascript Tests -->
+---
+title: Running Django's Javascript Tests
+tags:
+  - Engineering
+---
 
 Django has lots of tests, and wide range of types:
 - unit tests with Unittest

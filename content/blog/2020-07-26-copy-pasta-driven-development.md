@@ -1,4 +1,6 @@
-<!-- title:Copy/Pasta Driven Development® -->
+---
+title: "Copy/Pasta Driven Development®" 
+---
 
 
 As seen in numerous pull requests, the conversation goes something like this:

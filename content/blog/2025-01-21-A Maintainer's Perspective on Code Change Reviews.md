@@ -1,5 +1,10 @@
-<!-- title:Don't Be That Person: A Maintainer's Perspective on Code Change Reviews -->
-
+---
+title: "Don't Be That Person: A Maintainer's Perspective on Code Change Reviews"
+tags:
+  - Engineering
+  - meta
+  - Obsidian
+---
 What most people underestimate about open source is that creating a PR is only the first hurdle to jump through. For better or worse, contributing changes to any open-source software is difficult and generally met with friction and delay.
 
 Here, I will present different ways a PR review can turn out from a maintainer's (MY) perspective.

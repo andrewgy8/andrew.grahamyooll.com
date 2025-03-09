@@ -1,4 +1,6 @@
-<!-- title:Cordova Geolocation Plugin with Ionic 2 and ngRx -->
+--- 
+title: Cordova Geolocation Plugin with Ionic 2 and ngRx 
+---
 
 <p>The other day I was installing the Cordova Geolocation plugin on an Ionic2 implementing Redux app I have. The issue I was having, was storing the “geolocation" object returned from the Geolocation.getCurrentLocation() method. </p>
 

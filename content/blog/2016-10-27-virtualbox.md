@@ -1,4 +1,6 @@
-<!-- title:VirtualBox on Kali-Linux -->
+--- 
+title: VirtualBox on Kali-Linux 
+---
 
 <h2 class="section-heading">Want to run a virtual machine within Kali Linux?</h2>
 

@@ -1,4 +1,6 @@
-<!-- title:Good Job Jekyll -->
+--- 
+title: Good Job Jekyll 
+---
 
 Good job [Jekyll](https://jekyllrb.com/) and the team around [Jekyll Admin](https://github.com/jekyll/jekyll-admin)!
 

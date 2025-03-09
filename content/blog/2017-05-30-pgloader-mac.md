@@ -1,4 +1,6 @@
-<!-- title:Pgloader on Mac -->
+--- 
+title: Pgloader on Mac 
+---
 
 <h2 class="section-heading">Getting Started</h2>
 <p>The other day, we at Solaris Offgrid needed to port our database over to PostgreSQL.  It was time.</p>

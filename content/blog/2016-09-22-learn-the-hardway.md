@@ -1,4 +1,6 @@
-<!-- title:Learning programming the harder way -->
+--- 
+title: Learning programming the harder way 
+---
 
 <h2 class="section-heading">Summary</h2>
 <ol>
