@@ -1,4 +1,7 @@
-<!-- title: Welcome Friend -->
+---
+title: Welcome friend
+---
+
 ## About
 Hi there! I'm Andrew.
 
