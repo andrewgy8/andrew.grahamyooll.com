@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Z73RLG2NVR"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-Z73RLG2NVR");
+    </script>
+    <title>Stop Separating People Problems from Engineering Problems - AGY</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/style.css"
+    />
+    <!-- Google tag (gtag.js) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+
+  <body id="The-False-Dichotomy">
+    <nav>
+      <section>
+        <span class="home">
+          <a href="/">Home</a>
+          <a href="/blog/">Writings</a>
+        </span>
+      </section>
+    </nav>
+
+    <main>
+      
+<article>
+  <h1>
+    <a href="/blog/The-False-Dichotomy/">Stop Separating People Problems from Engineering Problems</a>
+  </h1>
+  <p class="meta">Published on 2026-01-17 by <b>Andrew Graham-Yooll</b></p>
+  
+<p>In response to my recent post on <a href="../Try-to-Take-My-Position">moving away from engineering management to individual contributor roles</a>, someone asked me whether I'll miss solving people problems and only solving the technical engineer problems.</p>
+<p>Judging by the look on their face, I think my answer surprised them.</p>
+<p>From my experience, there is no meaningful distinction between the two, at least not in any way that matters when you're actually trying to solve real problems.</p>
+<p>The belief that you can specialize in one or the other, or that certain engineers are &quot;people-focused&quot; while others are &quot;technically-focused,&quot; is one of the most persistent and counterproductive myths in software engineering.</p>
+<h1>Engineering Problems Are People Problems</h1>
+<p>Consider this common scenario.</p>
+<p>Your service is experiencing performance degradation. The metrics are clearly saying database queries are the bottleneck. Testing confirms it and the technical diagnosis seems straightforward.</p>
+<p>But when you dig deeper, you discover the real issue is someone chose a particular indexing strategy three years ago, optimizing for a use case that was later deprioritized and never shipped. The schema reflects assumptions that are no longer valid. The queries reflect constraints that no longer exist.</p>
+<p>You will have to address this technically by throwing more hardware at it, rewrite the queries, migrate to a different database technology. But none of these solutions address the actual problem that architectural decisions were made under different constraints with different information.</p>
+<p>The sustainable solution requires understanding why those decisions were made, who the stakeholders were, what constraints they were operating under, and how to prevent similar misalignments in the future. It requires building consensus around current priorities, communicating trade-offs clearly, and ensuring the right people are involved in future architectural decisions.</p>
+<p><strong>The &quot;technical&quot; problem was always a coordination and communication problem in disguise.</strong></p>
+<p>You don't solve this with more sophisticated technology. You solve it by being able to navigate organizational context, build alignment, and change minds. These are the skills typically categorized as &quot;people skills.&quot;</p>
+<h1>People Problems Require Engineering Solutions</h1>
+<p>Now let's take another scenario.</p>
+<p>Your engineering team is firefighting production incidents every week. On-call rotations are brutal. Engineers are burnt out. The team is starting to see retention issues. Team morale is deteriorating.</p>
+<p>This looks like a classic people problem, and it is, in part. You need psychological safety, sustainable work practices, and support for your team. These are necessary interventions to keep the team afloat.</p>
+<p>But if you stop there, you're treating symptoms while ignoring the underlying cause.</p>
+<p>The sustainable solution requires engineering. Better observability so you catch issues before they become incidents, automated rollback mechanisms, feature flags, etc.</p>
+<p><strong>You solve the people problem by engineering away the conditions that created it.</strong></p>
+<p>Happy engineers need more than supportive culture. They need robust, well-designed systems that don't demand constant firefighting. Preventing burnout isn't just about work-life balance; it's about building technical systems that enable sustainable operations.</p>
+<h1>Why This Matters</h1>
+<p>The distinction between &quot;people problems&quot; and &quot;engineering problems&quot; isn't just academic. It actively prevents effective problem-solving.</p>
+<p>When you categorize a problem as purely technical, you miss the organizational and communication work required to solve it sustainably. When you categorize a problem as purely interpersonal, you miss the technical interventions that could eliminate it entirely.</p>
+<p>The most effective engineers I've worked with don't choose between solving for people or solving for systems. They recognize that:</p>
+<ul>
+<li><strong>Technical excellence requires collaboration.</strong> The best architecture in the world fails if you can't build consensus around it, communicate its trade-offs, or bring the right people along.</li>
+<li><strong>Healthy teams require solid technical foundations.</strong> Culture alone can't compensate for systems that require constant heroics to keep running.</li>
+<li><strong>Most problems require both lenses.</strong> The incident response problem needs better engineering <em>and</em> better coordination. The architectural decision needs technical rigor <em>and</em> stakeholder alignment.</li>
+</ul>
+<h1>It's Both :)</h1>
+<p>If you believe you can specialize exclusively in &quot;people problems&quot; or &quot;engineering problems,&quot; you'll consistently deliver incomplete solutions.</p>
+<p>The database performance issue gets a band-aid fix instead of addressing the decision-making process that caused it. The burnout problem gets motivational talks instead of leading systemic improvements that would eliminate the root cause.</p>
+<p>This doesn't mean every engineer needs to be equally strong in all dimensions. People have different strengths, and that's valuable. But it does mean that <strong>recognizing when a problem requires both technical and interpersonal solutions is a core engineering skill</strong>, not an optional specialization.</p>
+<p>The best solutions almost always require both.</p>
+
+</article>
+
+    </main>
+
+    <footer>
+      <section>
+        <p>&copy; whatever year you are in :) -- Andrew Graham-Yooll</p>
+        <p>
+          <a href="https://github.com/andrewgy8">GitHub</a>
+          <a href="https://www.linkedin.com/in/andrew-graham-yooll-%F0%9F%8F%84-623771141/">LinkedIn (CV)</a>
+          <a href="https://github.com/andrewgy8/bakesite">
+            Built with Bakesite
+          </a>
+        </p>
+      </section>
+    </footer>
+  </body>
+</html>
