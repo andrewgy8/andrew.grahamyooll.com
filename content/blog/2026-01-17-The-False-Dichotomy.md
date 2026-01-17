@@ -4,7 +4,7 @@ tags:
   - EngineeringManagement
   - career
 ---
-In response to my recent post on [moving away from engineering management to individual contributor roles](../Try-to-Take-My-Position), someone asked me whether I'll miss solving people problems and only solving the technical engineer problems.
+In response to my recent post on [moving away from engineering management to individual contributor roles](../Try-to-Take-My-Position), someone asked me whether I'll miss solving people problems and only solving technical engineering problems.
 
 Judging by the look on their face, I think my answer surprised them. 
 
