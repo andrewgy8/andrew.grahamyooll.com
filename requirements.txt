@@ -1,1 +1,1 @@
-bakesite==0.6.1
+bakesite==0.7.0
